@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groovy Programming Language Assessment - 50 Questions</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Top Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-area">
+        <div class="brand-icon">G</div>
+        <div>
+          <h1 id="i18n-brand-title" class="brand-title">Groovy Master Quiz</h1>
+          <p id="i18n-brand-subtitle" class="brand-subtitle">50-Question Comprehensive Assessment</p>
+        </div>
+      </div>
+
+      <div class="header-meta">
+        <!-- Language Switcher -->
+        <div class="lang-selector-box" title="Select Language">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="lang-selector" class="lang-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="vi">🇻🇳 Tiếng Việt</option>
+            <option value="th">🇹🇭 ภาษาไทย</option>
+          </select>
+        </div>
+
+        <!-- Live Timer -->
+        <div class="timer-box" title="Elapsed Time">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span id="timer-display">00:00</span>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-pill">
+          <span><strong id="header-answered-count">0</strong> / 50</span>
+          <div class="progress-bar-container">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Quick Submit Button -->
+        <button id="btn-submit-header" class="btn-submit-header">
+          <span id="i18n-btn-submit-header">Submit</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="main-wrapper" class="main-wrapper">
+    
+    <!-- Active Quiz Taking Section -->
+    <div id="quiz-active-section" style="display: contents;">
+      <!-- Question Stream (Left Column) -->
+      <section class="questions-stream" id="questions-stream">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Sticky Sidebar Navigation Palette (Right Column) -->
+      <aside class="sidebar-wrapper">
+        <div class="sidebar-sticky">
+          <h2 id="i18n-palette-title" class="palette-title">Question Palette</h2>
+          <div class="palette-stats">
+            <span><span id="i18n-answered-label">Answered:</span> <strong id="answered-count" style="color: var(--primary);">0</strong> / 50</span>
+            <span><span id="i18n-legend-done" style="color: #4f46e5;">● Done</span> <span id="i18n-legend-flag" style="color: #f59e0b;">★ Flag</span></span>
+          </div>
+
+          <!-- 50 Number Buttons Grid -->
+          <div class="matrix-grid" id="matrix-grid">
+            <!-- 1 to 50 generated dynamically -->
+          </div>
+
+          <!-- Actions -->
+          <div class="sidebar-actions">
+            <button id="btn-submit-main" class="btn-submit-main">Submit Assessment</button>
+            <button id="btn-clear-all" class="btn-clear">Reset All Answers</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Results Container (Displayed Post-Submission) -->
+    <section id="results-container" class="results-container">
+      
+      <!-- Hero Score Dashboard -->
+      <div id="results-hero" class="results-hero">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Review Controls / Filter Bar -->
+      <div class="review-controls">
+        <div class="filter-tabs">
+          <button id="filter-btn-all" class="filter-btn active" data-filter="all">All Questions (50)</button>
+          <button id="filter-btn-correct" class="filter-btn" data-filter="correct">Correct Only</button>
+          <button id="filter-btn-incorrect" class="filter-btn" data-filter="incorrect">Incorrect Only</button>
+          <button id="filter-btn-unanswered" class="filter-btn" data-filter="unanswered">Unanswered</button>
+        </div>
+
+        <div class="review-actions">
+          <button id="btn-print-results" class="btn-action-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span id="i18n-btn-print">Print / Save PDF</span>
+          </button>
+          <button id="btn-retake-quiz" class="btn-action-outline" style="color: var(--primary); border-color: var(--primary);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+            <span id="i18n-btn-retake">Retake Quiz</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Review List -->
+      <div id="review-list" class="review-list">
+        <!-- Detailed feedback cards rendered dynamically -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Submit Confirmation Modal -->
+  <div id="submit-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3 id="i18n-modal-title" class="modal-title">Submit Assessment</h3>
+      <p id="modal-desc" class="modal-desc">
+        Are you sure you want to finish and submit your quiz?
+      </p>
+      <div class="modal-actions">
+        <button id="modal-btn-cancel" class="btn-modal-cancel">Continue Quiz</button>
+        <button id="modal-btn-confirm" class="btn-modal-confirm">Confirm & Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
