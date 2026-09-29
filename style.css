@@ -405,7 +405,8 @@ body {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.18s ease;
-  user-select: none;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .option-row:hover {
@@ -430,6 +431,8 @@ body {
   place-content: center;
   transition: all 0.18s ease;
   flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .option-radio::before {
@@ -458,12 +461,16 @@ body {
   margin-right: 0.65rem;
   width: 18px;
   flex-shrink: 0;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .option-text {
   font-size: 0.95rem;
   color: var(--slate-800);
   flex: 1;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 /* ==========================================================================
